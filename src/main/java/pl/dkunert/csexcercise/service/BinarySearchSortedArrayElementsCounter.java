@@ -3,10 +3,11 @@ package pl.dkunert.csexcercise.service;
 import java.util.HashMap;
 import java.util.Map;
 
+// Best case complexity - O(logn) - when there is only one unique element, worst case O(nlogn) - when there are no duplicates
 public class BinarySearchSortedArrayElementsCounter extends SortedArrayElementsCounter {
 
     @Override
-    protected Map<Object, Integer> calculateElementsCounterMap(Comparable[] elements) {
+    protected Map<Object, Integer> countNumberOfElementsOccurrences(Comparable[] elements) {
 
         HashMap<Object, Integer> elementsCounterMap = new HashMap<>();
 
@@ -22,13 +23,16 @@ public class BinarySearchSortedArrayElementsCounter extends SortedArrayElementsC
         return elementsCounterMap;
     }
 
-    // returns index of element
+    // returns last index in array of searchedElement
     private int binarySearch(Comparable[] elements, int leftBound, int rightBound, Object searchedElement, int lastFoundIndexForSearchedElement) {
+        int middleIndex = leftBound + (rightBound - leftBound) / 2;
+
         if (leftBound >= rightBound) {
+            if (elements[middleIndex].equals(searchedElement)) {
+                return middleIndex;
+            }
             return lastFoundIndexForSearchedElement;
         }
-
-        int middleIndex = leftBound + (rightBound - leftBound) / 2;
 
         if (elements[middleIndex].equals(searchedElement)) {
             return binarySearch(elements, middleIndex + 1, rightBound, searchedElement, middleIndex);

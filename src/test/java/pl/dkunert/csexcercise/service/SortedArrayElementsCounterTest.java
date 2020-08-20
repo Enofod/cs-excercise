@@ -1,6 +1,10 @@
 package pl.dkunert.csexcercise.service;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pl.dkunert.csexcercise.testutil.GeneratorResult;
+import pl.dkunert.csexcercise.testutil.RandomSortedArrayGenerator;
+import pl.dkunert.csexcercise.testutil.StringRandomSortedArrayGenerator;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,8 +15,15 @@ abstract class SortedArrayElementsCounterTest {
 
     private SortedArrayElementsCounter underTest;
 
+    private RandomSortedArrayGenerator randomSortedArrayGenerator;
+
     public SortedArrayElementsCounterTest(SortedArrayElementsCounter underTest) {
         this.underTest = underTest;
+    }
+
+    @BeforeEach
+    void setUp() {
+        randomSortedArrayGenerator = new StringRandomSortedArrayGenerator();
     }
 
     @Test
@@ -89,6 +100,60 @@ abstract class SortedArrayElementsCounterTest {
         assertThat(result).isEqualTo(expectedResult);
     }
 
-    // TODO: Add randomly generated data
+    @Test
+    void generatedOneUniqueElement() {
+        // given
+        GeneratorResult generatorResult = randomSortedArrayGenerator.generateTestData(1, 500);
+        // when
+        Map<Object, Integer> result = underTest.solve(generatorResult.getInputData());
+
+        // then
+        assertThat(result).isEqualTo(generatorResult.getExpectedResult());
+    }
+
+    @Test
+    void generatedTwoUniqueElement() {
+        // given
+        GeneratorResult generatorResult = randomSortedArrayGenerator.generateTestData(2, 550);
+        // when
+        Map<Object, Integer> result = underTest.solve(generatorResult.getInputData());
+
+        // then
+        assertThat(result).isEqualTo(generatorResult.getExpectedResult());
+    }
+
+    @Test
+    void generatedTenUniqueElement() {
+        // given
+        GeneratorResult generatorResult = randomSortedArrayGenerator.generateTestData(10, 600);
+        // when
+        Map<Object, Integer> result = underTest.solve(generatorResult.getInputData());
+
+        // then
+        assertThat(result).isEqualTo(generatorResult.getExpectedResult());
+    }
+
+    @Test
+    void generatedHalfUniqueElement() {
+        // given
+        GeneratorResult generatorResult = randomSortedArrayGenerator.generateTestData(350, 700);
+        // when
+        Map<Object, Integer> result = underTest.solve(generatorResult.getInputData());
+
+        // then
+        assertThat(result).isEqualTo(generatorResult.getExpectedResult());
+    }
+
+    @Test
+    void generatedMostUniqueElement() {
+        // given
+        GeneratorResult generatorResult = randomSortedArrayGenerator.generateTestData(800, 800);
+        // when
+        Map<Object, Integer> result = underTest.solve(generatorResult.getInputData());
+
+        // then
+        assertThat(result).isEqualTo(generatorResult.getExpectedResult());
+    }
+
 
 }

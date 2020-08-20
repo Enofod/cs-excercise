@@ -3,11 +3,11 @@ package pl.dkunert.csexcercise.service;
 import java.util.HashMap;
 import java.util.Map;
 
-// One map call per element
+// One map call per element - need to be sorted. O(n) complexity
 public class HashMapCounterSortedArrayElementsCounter extends SortedArrayElementsCounter {
 
     @Override
-    protected Map<Object, Integer> calculateElementsCounterMap(Comparable[] elements) {
+    protected Map<Object, Integer> countNumberOfElementsOccurrences(Comparable[] elements) {
 
         HashMap<Object, Integer> elementsCounterMap = new HashMap<>();
 
