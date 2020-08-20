@@ -7,7 +7,7 @@ import java.util.Map;
 public class HashMapCounterSortedArrayElementsCounter extends SortedArrayElementsCounter {
 
     @Override
-    protected Map<Object, Integer> countNumberOfElementsOccurrences(Comparable[] elements) {
+    protected Map<Object, Integer> countNumberOfElementsOccurrences(Object[] elements) {
 
         HashMap<Object, Integer> elementsCounterMap = new HashMap<>();
 

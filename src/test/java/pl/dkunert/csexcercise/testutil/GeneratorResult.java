@@ -4,15 +4,15 @@ import java.util.Map;
 
 public class GeneratorResult {
 
-    private Comparable[] inputData;
+    private Object[] inputData;
     private Map<Object, Integer> expectedResult;
 
-    public GeneratorResult(Comparable[] inputData, Map<Object, Integer> expectedResult) {
+    public GeneratorResult(Object[] inputData, Map<Object, Integer> expectedResult) {
         this.inputData = inputData;
         this.expectedResult = expectedResult;
     }
 
-    public Comparable[] getInputData() {
+    public Object[] getInputData() {
         return inputData;
     }
 

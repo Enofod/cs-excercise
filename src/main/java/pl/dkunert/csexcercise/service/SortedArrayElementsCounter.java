@@ -11,7 +11,7 @@ public abstract class SortedArrayElementsCounter {
 
     private static Logger logger = LoggerFactory.getLogger(SortedArrayElementsCounter.class);
 
-    public Map<Object, Integer> solve(Comparable[] elements) {
+    public Map<Object, Integer> solve(Object[] elements) {
         ProcessingTimeUtil processingTimeUtil = new ProcessingTimeUtil();
 
         if (elements == null || elements.length == 0) {
@@ -24,5 +24,5 @@ public abstract class SortedArrayElementsCounter {
         return result;
     }
 
-    protected abstract Map<Object, Integer> countNumberOfElementsOccurrences(Comparable[] elements);
+    protected abstract Map<Object, Integer> countNumberOfElementsOccurrences(Object[] elements);
 }
